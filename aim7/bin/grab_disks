@@ -1,0 +1,54 @@
+#!/bin/bash
+
+#
+# Determine what disks we are to use.
+#
+# If hw_config.yml is not provided, then we will use all the disks that are not
+# mounted.
+#
+if test -f "hw_config.yml"; then
+	#
+	# We have a hardware definition file, use it.
+	#
+	disks=`grep storage hw_config.yml | cut -d: -f 2 | sed "s/,/ /g"`
+else
+	#
+	# Create a bunch of work files.
+	#
+	ALLSTG=$(mktemp /tmp/allstgdsk.XXXXX)
+	USEDDSK=$(mktemp /tmp/useddsk.XXXXX)
+	ALLDSK=$(mktemp /tmp/alldsk.XXXXX)
+	MNTDDSK=$(mktemp /tmp/mntddsk.XXXXX)
+	#
+	# Grab a list of all the disks we are to use.
+	#
+	lsblk -l > ${ALLSTG}
+
+	#
+	# Get the mounted root disk information
+	#
+	rootdisk=$(grep -e "part /$" -e boot$ ${ALLSTG} | awk '{print $1}')
+
+	if [[ $rootdisk =~ nvme* ]]; then
+		grep part ${ALLSTG}| grep -e / -e swap | awk '{print $1}' | sed s/p[[:digit:]]*$// | sort | uniq > $USEDDSK
+	else
+		grep -e disk -e part ${ALLSTG}| grep -e / -e swap | awk '{print $1}' | sed s/[[:digit:]]*$// | sort | uniq > $USEDDSK
+	fi
+	#
+	# Now the mounted disks
+	#
+	for i in `df | grep /dev | cut -d' ' -f1 | grep /`
+	do 
+		echo ${i##*/} >> $USEDDSK
+	done
+
+	#
+	# Retrieved the disks that are not mounted.
+	#
+	grep disk ${ALLSTG} | awk '{print $1}' | sort | uniq > ${ALLDSK}
+	disks=`echo $(grep -F -x -v -f ${USEDDSK} ${ALLDSK})`
+fi
+#
+# Report the disks that are to be used.
+#
+echo "$disks"  | awk '{ for (i=NF; i > 1; i--) printf("%s ",$i); print $1; }' > disks

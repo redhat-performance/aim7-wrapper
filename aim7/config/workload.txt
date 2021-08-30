@@ -1,0 +1,147 @@
+Workload name       METADATA
+Percent Read                                10
+Percent Read_file                           10
+Percent Mmap_read                           0
+Percent Random_read                         8
+Percent Write                               7
+Percent Write_file                          10
+Percent Mmap_write                          0
+Percent Random_write                        2
+Percent Read_modify_write                   1
+Percent Mkdir                               2
+Percent Rmdir                               0
+Percent Unlink                              4
+Percent Unlink2                             0
+Percent Create                              1
+Percent Append                              3
+Percent Lock                                5
+Percent Access                              14
+Percent Stat                                14
+Percent Chmod                               2
+Percent Readdir                             4
+Percent Copyfile                            0
+Percent Rename                              2
+Percent Statfs                              1
+Percent Pathconf                            0
+Percent Custom1                             0
+Percent Custom2                             0
+Read elem 0 xfer min size 1
+Read elem 0 xfer max size 511
+Read elem 0 xfer percent 3
+Read elem 1 xfer min size 512
+Read elem 1 xfer max size 1023
+Read elem 1 xfer percent 1
+Read elem 2 xfer min size 1024
+Read elem 2 xfer max size 2047
+Read elem 2 xfer percent 2
+Read elem 3 xfer min size 2048
+Read elem 3 xfer max size 4095
+Read elem 3 xfer percent 1
+Read elem 4 xfer min size 4096
+Read elem 4 xfer max size 4096
+Read elem 4 xfer percent 16
+Read elem 5 xfer min size 4097
+Read elem 5 xfer max size 8191
+Read elem 5 xfer percent 6
+Read elem 6 xfer min size 8192
+Read elem 6 xfer max size 8192
+Read elem 6 xfer percent 36
+Read elem 7 xfer min size 8193
+Read elem 7 xfer max size 16383
+Read elem 7 xfer percent 7
+Read elem 8 xfer min size 16384
+Read elem 8 xfer max size 16384
+Read elem 8 xfer percent 7
+Read elem 9 xfer min size 16385
+Read elem 9 xfer max size 32767
+Read elem 9 xfer percent 2
+Read elem 10 xfer min size 32768
+Read elem 10 xfer max size 32768
+Read elem 10 xfer percent 9
+Read elem 11 xfer min size 65536
+Read elem 11 xfer max size 65536
+Read elem 11 xfer percent 4
+Read elem 12 xfer min size 98304
+Read elem 12 xfer max size 98304
+Read elem 12 xfer percent 3
+Read elem 13 xfer min size 131072
+Read elem 13 xfer max size 131072
+Read elem 13 xfer percent 2
+Read elem 14 xfer min size 262144
+Read elem 14 xfer max size 262144
+Read elem 14 xfer percent 1
+Read elem 15 xfer min size 524288
+Read elem 15 xfer max size 524288
+Read elem 15 xfer percent 0
+Write elem 0 xfer min size 1
+Write elem 0 xfer max size 511
+Write elem 0 xfer percent 13
+Write elem 1 xfer min size 512
+Write elem 1 xfer max size 1023
+Write elem 1 xfer percent 3
+Write elem 2 xfer min size 1024
+Write elem 2 xfer max size 2047
+Write elem 2 xfer percent 7
+Write elem 3 xfer min size 2048
+Write elem 3 xfer max size 4095
+Write elem 3 xfer percent 5
+Write elem 4 xfer min size 4096
+Write elem 4 xfer max size 4096
+Write elem 4 xfer percent 11
+Write elem 5 xfer min size 4097
+Write elem 5 xfer max size 8191
+Write elem 5 xfer percent 3
+Write elem 6 xfer min size 8192
+Write elem 6 xfer max size 8192
+Write elem 6 xfer percent 30
+Write elem 7 xfer min size 8193
+Write elem 7 xfer max size 16383
+Write elem 7 xfer percent 7
+Write elem 8 xfer min size 16384
+Write elem 8 xfer max size 16384
+Write elem 8 xfer percent 5
+Write elem 9 xfer min size 16385
+Write elem 9 xfer max size 32767
+Write elem 9 xfer percent 1
+Write elem 10 xfer min size 32768
+Write elem 10 xfer max size 32768
+Write elem 10 xfer percent 6
+Write elem 11 xfer min size 65536
+Write elem 11 xfer max size 65536
+Write elem 11 xfer percent 4
+Write elem 12 xfer min size 98304
+Write elem 12 xfer max size 98304
+Write elem 12 xfer percent 2
+Write elem 13 xfer min size 131072
+Write elem 13 xfer max size 131072
+Write elem 13 xfer percent 2
+Write elem 14 xfer min size 262144
+Write elem 14 xfer max size 262144
+Write elem 14 xfer percent 1
+Write elem 15 xfer min size 524288
+Write elem 15 xfer max size 524288
+Write elem 15 xfer percent 0
+Percent write commit 33
+Percent direct 0
+Align          0
+Percent osync 0
+Percent geometric 10
+Percent compress 0
+Percent dedup 0
+Percent dedup_within 0
+Percent dedup_across 0
+Dedupe group count 1
+Percent per_spot 0
+Min acc_per_spot 0
+Acc mult_spot 5
+Percent affinity 0
+Spot shape 0
+Dedup Granule size 4096
+Dedup gran rep limit 100
+Comp Granule size 12288
+Background 0
+Sharemode 0
+Uniform size dist 0
+Rand dist behavior 0
+Cipher behavior 0
+FS type       POSIX
