@@ -24,7 +24,14 @@
 arguments="$@"
 fields=`echo $0 |awk -F'/' '{print NF}'`
 let fields="$fields-2"
-run_dir=`echo $0 | cut -d'/' -f1-$fields`
+
+if [[ $0 == "./"* ]]; then
+	run_dir=`pwd`
+else
+	chars=`echo $0 | awk -v RS='/' 'END{print NR-1}'`
+	run_dir=`echo $0 | cut -d'/' -f 1-${chars}`
+fi
+
 aim_exec=$0
  
 #
@@ -43,7 +50,7 @@ GFS_CAP_INC=50
 custom_config="none"
 passed_config="none"
 config="none"
-tools_git=https://github.com/dvalinrh/test_tools
+tools_git=https://github.com/redhat-performance/test_tools-wrappers
 
 usage()
 {
