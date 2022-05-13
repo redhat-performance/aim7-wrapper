@@ -26,7 +26,14 @@ fields=`echo $0 |awk -F'/' '{print NF}'`
 let fields="$fields-2"
 
 if [[ $0 == "./"* ]]; then
-	run_dir=`pwd`
+	chars=`echo $0 | awk -v RS='/' 'END{print NR-1}'`
+	if [[ $chars == 1 ]]; then
+		run_dir=`pwd`
+	else
+		run_dir=`echo $0 | cut -d'/' -f 1-${chars} | cut -d'.' -f2-`
+		curdir=`pwd`
+		run_dir="${curdir}${run_dir}"
+	fi
 else
 	chars=`echo $0 | awk -v RS='/' 'END{print NR-1}'`
 	run_dir=`echo $0 | cut -d'/' -f 1-${chars}`
