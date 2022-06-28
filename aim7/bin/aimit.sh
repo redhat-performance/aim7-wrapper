@@ -25,13 +25,13 @@ arguments="$@"
 fields=`echo $0 |awk -F'/' '{print NF}'`
 let fields="$fields-2"
 
+curdir=`pwd`
 if [[ $0 == "./"* ]]; then
 	chars=`echo $0 | awk -v RS='/' 'END{print NR-1}'`
 	if [[ $chars == 1 ]]; then
 		run_dir=`pwd`
 	else
 		run_dir=`echo $0 | cut -d'/' -f 1-${chars} | cut -d'.' -f2-`
-		curdir=`pwd`
 		run_dir="${curdir}${run_dir}"
 	fi
 else
@@ -473,6 +473,7 @@ if [ $to_pbench -eq 1 ]; then
 	if [ -f /var/lib/pbench-agent/tools-default/iostat ]; then
 		mv /var/lib/pbench-agent/tools-default/perf /root/iostat
 	fi
+	cd $curdir
 	echo $TOOLS_BIN/execute_via_pbench_1 --cmd_executing "$aim_exec" ${arguments} --test aim7 --spacing 11
 	$TOOLS_BIN/execute_via_pbench_1 --cmd_executing "$aim_exec" ${arguments} --test aim7 --spacing 11
 	if [ -f /root/pidstat_pbench ]; then
@@ -533,6 +534,7 @@ else
 	done
 	pushd /aim_data
 	dir=`ls -td aim7* | head -n 1`
+	cp ${curdir}/meta_data.yml /tmp/results_aim7_${to_tuned_setting}/$TDIR
 	cp -R $dir /tmp/results_aim7_${to_tuned_setting}/$TDIR
 	popd
 
