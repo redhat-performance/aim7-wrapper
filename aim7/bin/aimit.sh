@@ -27,10 +27,15 @@ let fields="$fields-2"
 
 curdir=`pwd`
 if [[ $0 == "./"* ]]; then
-	chars=`echo $0 | awk -v RS='/' 'END{print NR-1}'`
+	#
+	# Are exec is in bin, do away with that.
+	#
+	chars=`echo $0 | awk -v RS='/' 'END{print NR-2}'`
 	if [[ $chars == 1 ]]; then
 		run_dir=`pwd`
 	else
+		echo $0
+	        echo we are here
 		run_dir=`echo $0 | cut -d'/' -f 1-${chars} | cut -d'.' -f2-`
 		run_dir="${curdir}${run_dir}"
 	fi
@@ -474,8 +479,8 @@ if [ $to_pbench -eq 1 ]; then
 		mv /var/lib/pbench-agent/tools-default/perf /root/iostat
 	fi
 	cd $curdir
-	echo $TOOLS_BIN/execute_via_pbench_1 --cmd_executing "$aim_exec" ${arguments} --test aim7 --spacing 11
-	$TOOLS_BIN/execute_via_pbench_1 --cmd_executing "$aim_exec" ${arguments} --test aim7 --spacing 11
+	echo $TOOLS_BIN/execute_via_pbench --cmd_executing "$aim_exec" ${arguments} --test aim7 --spacing 11
+	$TOOLS_BIN/execute_via_pbench --cmd_executing "$aim_exec" ${arguments} --test aim7 --spacing 11
 	if [ -f /root/pidstat_pbench ]; then
 		mv /root/pidstat_pbench /var/lib/pbench-agent/tools-default/pidstat
 	fi
