@@ -539,7 +539,7 @@ else
 	done
 	pushd /aim_data
 	dir=`ls -td aim7* | head -n 1`
-	cp ${curdir}/meta_data.yml /tmp/results_aim7_${to_tuned_setting}/$TDIR
+	cp /tmp/meta_data.yml ${BASE}/${TDIR}
 	cp -R $dir /tmp/results_aim7_${to_tuned_setting}/$TDIR
 	popd
 
